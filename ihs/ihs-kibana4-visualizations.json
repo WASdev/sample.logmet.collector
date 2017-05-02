@@ -1,0 +1,195 @@
+[
+  {
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_hotResponseCodes",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Hot Response Codes",
+    "version": 1,
+    "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"ibm_datetime\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"filters\",\"schema\":\"group\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"ibm_responseCode:[100 TO 199]\",\"analyze_wildcard\":true}}},\"label\":\"100s\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"ibm_responseCode:[300 TO 399]\",\"analyze_wildcard\":true}}},\"label\":\"300s\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"ibm_responseCode:[400 TO 499]\",\"analyze_wildcard\":true}}},\"label\":\"400s\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"ibm_responseCode:[500 TO 599]\",\"analyze_wildcard\":true}}},\"label\":\"500s\"}]}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_trafficinfo",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+    },
+    "title": "IHS Traffic Dashboard",
+    "version": 1,
+    "visState": "{\"type\":\"markdown\",\"params\":{\"markdown\":\"This dashboard visualizes access logging information. In order to visualize the data, configure the c2clogging.yml to use the IHS access_log. The duration numbers are shown in microseconds.\\n\\n Initially, the visualizations will show *'Could not locate that index-pattern-field'* due to the index not being generated. Ensure all log types are being sent to Kibana using the Discover tab. Go to Settings -> Indices -> logstash-<UUID> and click on the yellow refresh button to generate the index. The dashboards will now be populated with data.\\n\\n Filters can be applied by clicking on a host, an user directory, a server name or a tag shown on the dashboard.\"},\"aggs\":[],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_slowestURLs",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Slowest URLs",
+    "version": 1,
+    "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ibm_uriPath.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"custom\",\"orderAgg\":{\"id\":\"2-orderAgg\",\"type\":\"avg\",\"schema\":{\"group\":\"none\",\"name\":\"orderAgg\",\"title\":\"Order Agg\",\"aggFilter\":[\"!percentiles\",\"!std_dev\"],\"min\":0,\"max\":null,\"editor\":false,\"params\":[]},\"params\":{\"field\":\"ibm_elapsedTime\"}}}},{\"id\":\"4\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"3\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}},{\"id\":\"5\",\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}},{\"id\":\"1\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_topURLs",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Top URLs",
+    "version": 1,
+    "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ibm_uriPath.raw\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}},{\"id\":\"4\",\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}},{\"id\":\"5\",\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_slowHits",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Slow Hits",
+    "version": 1,
+    "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"ibm_datetime\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"range\",\"schema\":\"group\",\"params\":{\"field\":\"ibm_elapsedTime\",\"ranges\":[{\"from\":500000,\"to\":1000000},{\"from\":1000000}]}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogAverageElapsedTimeGraph",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Access Log Average Elapsed Time",
+    "version": 1,
+    "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"ibm_datetime\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogElapsedTimeGraph",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Access Log Elapsed Time",
+    "version": 1,
+    "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"ibm_datetime\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"range\",\"schema\":\"group\",\"params\":{\"field\":\"ibm_elapsedTime\",\"ranges\":[{\"from\":0,\"to\":250000},{\"from\":250000,\"to\":500000},{\"from\":500000,\"to\":1000000},{\"from\":1000000,\"to\":2000000},{\"from\":2000000}]}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogMetrics",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Access Log Metrics",
+    "version": 1,
+    "visState": "{\"type\":\"metric\",\"params\":{\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"ibm_elapsedTime\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogResponseCodeGraph",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "title": "IHS Access Log Response Code",
+    "version": 1,
+    "visState": "{\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"ibm_datetime\",\"interval\":\"m\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"ibm_responseCode\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogCount",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[],\"index\":\"[logstash-SPACE_ID_PLACE_HOLDER-]YYYY.MM.DD\",\"query\":{\"query_string\":{\"query\":\"type:ihs_accesslog\",\"analyze_wildcard\":true}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+    },
+    "title": "IHS Access Log Count",
+    "version": 1,
+    "visState": "{\"type\":\"metric\",\"params\":{\"fontSize\":\"30\"},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_serversTable",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_all",
+    "title": "IHS Servers Table",
+    "version": 1,
+    "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ibm_serverName.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_userDirsTable",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_all",
+    "title": "IHS User Directories",
+    "version": 1,
+    "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ibm_userDir.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}"
+  }
+},
+{
+  "_id": "SPACE_ID_PLACE_HOLDER_ihs_hostTable",
+  "_type": "visualization",
+  "_source": {
+    "description": "",
+    "group": "SPACE_ID_PLACE_HOLDER",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"filter\":[]}"
+    },
+    "savedSearchId": "SPACE_ID_PLACE_HOLDER_ihs_all",
+    "title": "IHS Host Table",
+    "version": 1,
+    "visState": "{\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"host.raw\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}"
+  }
+}
+]

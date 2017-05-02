@@ -1,0 +1,70 @@
+[
+  {
+    "_id": "SPACE_ID_PLACE_HOLDER_ihs_accessLogSearch",
+    "_type": "search",
+    "_source": {
+      "columns": [
+        "ibm_remoteHost",
+        "ibm_uriPath",
+        "ibm_responseCode",
+        "ibm_bytesReceived",
+        "ibm_elapsedTime",
+        "ibm_sequence"
+      ],
+      "description": "",
+      "group": "SPACE_ID_PLACE_HOLDER",
+      "hits": 0,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"[logstash-SPACE_ID_PLACE_HOLDER-]YYYY.MM.DD\",\"query\":{\"query_string\":{\"query\":\"type:ihs_accesslog\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647}}"
+      },
+      "sort": [
+        "ibm_sequence.raw",
+        "desc"
+      ],
+      "title": "IHS Access Log Search",
+      "version": 1
+    }
+  },
+  {
+    "_id": "SPACE_ID_PLACE_HOLDER_ihs_badHits",
+    "_type": "search",
+    "_source": {
+      "columns": [
+        "_source"
+      ],
+      "description": "",
+      "group": "SPACE_ID_PLACE_HOLDER",
+      "hits": 0,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"[logstash-SPACE_ID_PLACE_HOLDER-]YYYY.MM.DD\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[],\"query\":{\"query_string\":{\"query\":\"type:\\\"ihs_accesslog\\\" AND !ibm_responseCode:\\\"200\\\"\",\"analyze_wildcard\":true}}}"
+      },
+      "sort": [
+        "ibm_datetime",
+        "desc"
+      ],
+      "title": "IHS Bad Hits Search",
+      "version": 1
+    }
+  },
+  {
+    "_id": "SPACE_ID_PLACE_HOLDER_ihs_all",
+    "_type": "search",
+    "_source": {
+      "columns": [
+        "_source"
+      ],
+      "description": "",
+      "group": "SPACE_ID_PLACE_HOLDER",
+      "hits": 0,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"[logstash-SPACE_ID_PLACE_HOLDER-]YYYY.MM.DD\",\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[],\"query\":{\"query_string\":{\"query\":\"_type:ihs_*\",\"analyze_wildcard\":true}}}"
+      },
+      "sort": [
+        "ibm_datetime",
+        "desc"
+      ],
+      "title": "IHS All Search",
+      "version": 1
+    }
+  }
+]
