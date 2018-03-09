@@ -4,9 +4,9 @@
     "_type": "search",
     "_source": {
       "columns": [
-        "loglevel",
-        "module",
-        "ibm_messageId",
+        "loglevel_str",
+        "module_str",
+        "ibm_messageId_str",
         "host",
         "_type",
         "message"
